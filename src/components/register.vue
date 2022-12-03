@@ -1,62 +1,118 @@
 <template>
+  <div class="h-screen bg-gray-600 flex">
+    <div
+      class="rounded-lg bg-gray-800 w-full items-center lg:w-3/12 m-auto xl:p-10 lg:p-8 relative flex justify-center  lg:flex-row hover:shadow-md border border-blue-800 ">
+      <div class="container">
 
- 
-    <div class="h-screen bg-gray-600 flex">
-    <div class="rounded-lg bg-gray-800 w-full items-center lg:w-3/12 m-auto xl:p-10 lg:p-8 relative flex justify-center  lg:flex-row hover:shadow-md border border-blue-800 ">
-  <div class="container">
-
-            <div class="card">
-            <div class="cardbody">
-                <h1 class="text-3xl text-center font-bold text-white my-8">Register</h1> 
+        <div class="card">
+          <div class="cardbody">
+            <h1 class="text-3xl text-center font-bold text-white my-8">Register</h1>
 
             <div class="mt-8">
-        <div class="lg:col-span-2">
-          <div class="md:col-span-5">
-          <div class="grid gap-4 gap-y-2 text-sm grid-cols-1">
-                <form class="submit" @submit.prevent>
-                  <input class="w-full focus:border-blue-600 focus:ring-1 focus:ring-blue-500 focus:outline-none  text- text-black placeholder-gray-500 border border-gray-200 rounded-lg pl-4 py-2 mb-4" type="text" name="email" placeholder="Email" required/>
-                  <br>
+              <div class="lg:col-span-2">
+                <div class="md:col-span-5">
+                  <div class="grid gap-4 gap-y-2 text-sm grid-cols-1">
+                    <form class="submit" @submit.prevent="register">
+                      <input
+                        class="w-full focus:border-blue-600 focus:ring-1 focus:ring-blue-500 focus:outline-none  text- text-black placeholder-gray-500 border border-gray-200 rounded-lg pl-4 py-2 mb-4"
+                        type="email" name="email" placeholder="Email" v-model="email" required />
+                      <br>
 
-                  <input class="w-full focus:border-blue-600 focus:ring-1 focus:ring-blue-500 focus:outline-none  text- text-black placeholder-gray-500 border border-gray-200 rounded-lg pl-4 py-2 mb-4" type="text" name="username" placeholder="Username" required/>
-                  <br>
+                      <input
+                        class="w-full focus:border-blue-600 focus:ring-1 focus:ring-blue-500 focus:outline-none  text- text-black placeholder-gray-500 border border-gray-200 rounded-lg pl-4 py-2 mb-4"
+                        type="password" name="password" placeholder="Password" v-model="password" required />
+                      <br>
 
-                  <input class="w-full focus:border-blue-600 focus:ring-1 focus:ring-blue-500 focus:outline-none  text- text-black placeholder-gray-500 border border-gray-200 rounded-lg pl-4 py-2 mb-4" type="text" name="password" placeholder="Password" required/>
-                  <br>
+                      <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        >Register</button>
+                      <br>
 
-                  <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="$router.push('/')" type="submit">Submit</button>
+                      <div class="alert alert-warning alert-dismissible fade show mt-5 d-none" role="alert"
+                        id="alert_2">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                      <br>
 
-                    <div class="justify-center grid">
-                    <h1 class="text-sm text-white">Already  have an account ?</h1>
-                    
-                    <button @click="$router.push('/')" class="text-sm text-blue-600 hover:text-blue-600">Login</button>
+                      <div class="justify-center grid">
+                        <h1 class="text-sm text-white">Already have an account ?</h1>
+
+                        <button type="button" @click="$router.push('/')"
+                          class="text-sm text-blue-600 hover:text-blue-600">Login</button>
+                      </div>
+                    </form>
                   </div>
-                    
-                  
-                  
-                </form>
-               
+                </div>
               </div>
             </div>
           </div>
         </div>
-                </div>
-            </div>
-            </div>
+      </div>
     </div>
   </div>
 
 </template>
 
 <script>
-import {useApp} from '../stores/index';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 export default {
-  setup() {
-    const App = useApp();
+  data() {
     return {
-      App,
-    }
+      email: "",
+      password: "",
+    };
   },
-  created() {
-  }
-}
+  methods: {
+    register(submitEvent) {
+      this.email = submitEvent.target.elements.email.value;
+      this.password = submitEvent.target.elements.password.value;
+
+    
+      // firebase registration
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, this.email, this.password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+          console.log("Registration completed");
+          this.$router.push("/");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+          let alert_2 = document.querySelector("#alert_2");
+          alert_2.classList.remove("d-none");
+          alert_2.innerHTML = errorMessage;
+          console.log(alert_2);
+        });
+    },
+    moveToLogin() {
+      this.$router.push("/");
+    },
+  },
+};
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
