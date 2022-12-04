@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LoginView from "../components/login.vue";
+import Redirect from '../views/Redirect.vue';
 import { getAuth } from "firebase/auth";
 
 const routes = [
@@ -23,6 +24,12 @@ const routes = [
       authRequired: true,
     },
   },
+  {
+    path: '/:code',
+    name: 'Redirect',
+    component: Redirect
+  }
+  
 ];
 
 const router = createRouter({
