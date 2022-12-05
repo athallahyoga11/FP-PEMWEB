@@ -1,7 +1,7 @@
 <template>
-    <div class="h-screen bg-gray-600 flex">
+    <div class="h-screen backdrop-blur-3xl flex">
         <div
-            class="rounded-lg bg-gray-800 w-full items-center lg:w-3/12 m-auto xl:p-10 lg:p-8 relative flex justify-center  lg:flex-row hover:shadow-md border border-blue-800 ">
+            class="rounded-lg bg-transparent w-full items-center lg:w-3/12 m-auto xl:p-10 lg:p-8 relative flex justify-center  lg:flex-row  ">
             <div class="container">
                 <div class="card">
                     <div class="cardbody">
@@ -20,12 +20,12 @@
                                                 type="password" name="password" placeholder="Password" required />
                                             <br>
                                             <button
-                                                class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                                class="w-full bg-gradient-to-r from-blue-900 to-cyan-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                                 type="submit" id="login_button">Login</button>
                                             <br>
-                                            <div class="alert alert-warning alert-dismissible fade show mt-5 d-none"
+                                            <div class="alert alert-warning alert-dismissible fade show mt-5 d-none flex justify-center text-white"
                                                 role="alert" id="alert_1">
-                                                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                                Please Fill All This Field
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                     aria-label="Close"></button>
                                             </div>
