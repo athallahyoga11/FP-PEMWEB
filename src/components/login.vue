@@ -76,7 +76,7 @@ export default {
           console.log(errorMessage);
           let alert_1 = document.querySelector("#alert_1");
           alert_1.classList.remove("d-none");
-          alert_1.innerHTML = errorMessage;
+          alert_1.innerHTML = errorCode;
           console.log(alert_1);
         });
     },

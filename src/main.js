@@ -6,6 +6,8 @@ import './assets/style.css'
 import { initializeApp } from 'firebase/app';
 import { getAuth } from "firebase/auth";
 
+
+
 // TODO: Replace the following with your app's Firebase project configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {

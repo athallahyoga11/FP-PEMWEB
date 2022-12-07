@@ -1,6 +1,7 @@
 <template>
-<!-- <div class="h-full backdrop-blur-3xl"> -->
-  <div class="blur-lg"></div> <nav id="home" class="bg-gray-800 border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
+<div class="h-full backdrop-blur-3xl">
+  <div class="blur-lg"></div>
+  <header id="home" class=" bg-gray-800 border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
     <div class="container flex flex-wrap items-center justify-between mx-auto">
       <div class="flex md:order-2">
         <button type="button"
@@ -14,26 +15,26 @@
           class="flex flex-col p-4 mt-4 border border-gray-800 rounded-lg bg-gray-800 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-gray-800 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
           <li>
             <a href="#about"
-              class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+              class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent  md:p-0 dark:text-white"
               aria-current="page">About Us</a>
           </li>
 
           <li>
             <a href="#link"
-              class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+              class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent md:p-0 dark:text-white"
               aria-current="page">Link</a>
           </li>
-
         </ul>
       </div>
 
     </div>
 
 
-  </nav>
+  </header>
   <!-- Shorten -->
   <div
-    class="rounded-lg bg-gray-900 w-full items-center lg:w-3/12 m-auto xl:p-10 lg:p-8 relative flex justify-center  lg:flex-row hover:shadow-md border border-blue-800 my-32">
+    class="rounded-3xl bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 
+ w-full items-center lg:w-3/12 m-auto xl:p-10 lg:p-8 relative flex justify-center  lg:flex-row hover:shadow-md  my-32">
     <div class="container">
       <div class="card">
         <div class="cardbody">
@@ -93,7 +94,9 @@
   <div class="text-6xl text-white text-center font-bold my-32">Hafozh Developer Team</div>
   <section id="about" class="flex flex-row first-letter: my-24">
     <!-- Box 1 -->
-    <section class="w-64 mx-auto bg-gray-900 rounded-2xl px-8 py-6 shadow-lg">
+    <section class="w-64 mx-auto bg-gray-400 rounded-lg
+     bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 
+ rounded-3xl px-8 py-6 shadow-lg">
         <div class="flex items-center">
             <span class="text-gray-400 text-sm">Login/Register Dashboard Frontend</span>
             <span class="text-blue-500">
@@ -120,11 +123,12 @@
             <span class="text-gray-400 font-semibold">Storage:</span>
             <span>40%</span>
         </div>
-
+        
     </section>
 
     <!-- Box 2 -->
-    <section class="w-64 mx-auto bg-gray-900 rounded-2xl px-8 py-6 shadow-lg">
+    <section class="w-64 mx-auto bg-gray-400 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 
+ rounded-3xl px-8 py-6 shadow-lg">
         <div class="flex items-center">
             <span class="text-gray-400 text-sm">Shorten Frontend-Backend Developer</span>
             <span class="text-blue-500">
@@ -155,7 +159,8 @@
     </section>
 
     <!-- Box 3  -->
-    <section class="w-64 mx-auto bg-gray-900 rounded-2xl px-8 py-6 shadow-lg">
+    <section class="w-64 mx-auto bg-gray-400 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10
+ rounded-3xl px-8 py-6 shadow-lg">
         <div class="flex items-center">
             <span class="text-gray-400 text-sm">Login/Register Shorten Backend</span>
             <span class="text-blue-500">
@@ -198,12 +203,12 @@
     </ul>
 </footer>
         
-<!-- </div> -->
+</div>
 </template>
 
 
 <script>
-import { getAuth } from "firebase/auth";
+import { getAuth, getDocs } from "firebase/auth";
 import db  from "../firebase/firebaseInit.js";
 import shortid from 'shortid';
 
@@ -263,9 +268,13 @@ export default {
       }).catch((error) => {
         console.error(error);
       });
-    }
+    },
+
+    
   },
 };
+
+ 
 </script>
 
 
